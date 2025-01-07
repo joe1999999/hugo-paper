@@ -1,6 +1,27 @@
+
 <footer
   class="mx-auto flex h-[4.5rem] max-w-[--w] items-center px-8 text-xs uppercase tracking-wider opacity-60"
 >
+<!-- Testing Valine -->
+<script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+<!---->
+<script>
+  new Valine({
+    el: '#vcomments',       // The HTML element where Valine will be initialized
+    appId: 'dxDTxDKpSCcKsAMf5BZy3tIi-MdYXbMMI',   // Replace with your LeanCloud App ID
+    appKey: 'vVwBgfWLLJz3fMgQ7Uwf5XjP', // Replace with your LeanCloud App Key
+    serverURLs: ' https://dxdtxdkp.api.lncldglobal.com',
+    placeholder: 'Leave a comment', // Placeholder text
+    avatar: 'mp',           // Avatar style
+
+    path: window.location.pathname, // Ensures comments are tied to the correct page
+    lang: 'en',                // Language ('en', 'zh-CN', etc.)
+    highlight: true,           // Code highlighting in comments
+    recordIP : true, 
+    avatarForce : true,
+  });
+</script>
+
   <div class="mr-auto">
   {{if site.Copyright}}
     {{site.Copyright}}

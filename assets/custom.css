@@ -1,1 +1,16 @@
 /* Place custom css here. */
+/* Hide the email field */
+#vcomments .vmail {
+    display: none;
+  }
+  
+  /* Hide the website field */
+  #vcomments .vlink {
+    display: none;
+  }
+
+  /* Increase the width of the nickname field */
+#vcomments .vnick  {
+  width: 100%; /* Adjust the width as needed (e.g., 100%, 400px, etc.) */
+ 
+}
