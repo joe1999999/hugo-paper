@@ -74,6 +74,13 @@
   <script>
     // base
     const htmlClass = document.documentElement.classList;
+    const btnDark = document.querySelector('.btn-dark');
+    
+    const logo = document.querySelector(".mylogo");
+
+    const lightLogo = "https://cosmicocean.netlify.app/logo.png";
+    const darkLogo = "https://cosmicocean.netlify.app/logo_for_dark.png";
+
     setTimeout(() => {
       htmlClass.remove('not-ready');
     }, 10);
@@ -91,35 +98,21 @@
       metaTheme.setAttribute('content', isDark ? '#000' : lightBg);
       htmlClass[isDark ? 'add' : 'remove']('dark');
       localStorage.setItem('dark', isDark);
-      const logo = document.querySelector(".mylogo");
-      const currentSrc = logo.getAttribute("src");
+     
+      // Update the logo depending on the mode
+      logo.setAttribute("src", isDark ? darkLogo : lightLogo);
 
-      const darkLogo = "https://cosmicocean.netlify.app/logo_for_dark.png";
-      // Toggle the src attribute
-      logo.setAttribute("src", darkLogo);
+      
     };
 
     // init
     const darkScheme = window.matchMedia('(prefers-color-scheme: dark)');
     if (htmlClass.contains('dark')) {
       setDark(true);
-      const logo = document.querySelector(".mylogo");
-      const currentSrc = logo.getAttribute("src");
-
-      const darkLogo = "https://cosmicocean.netlify.app/logo_for_dark.png";
-      // Toggle the src attribute
-      logo.setAttribute("src", darkLogo);
-      
-      
     } else {
       const darkVal = localStorage.getItem('dark');
       setDark(darkVal ? darkVal === 'true' : darkScheme.matches);
-      const logo = document.querySelector(".mylogo");
-      const currentSrc = logo.getAttribute("src");
-
-      const lightLogo = "https://cosmicocean.netlify.app/logo.png";
-      // Toggle the src attribute
-      logo.setAttribute("src", lightLogo);
+      
       
     }
 
@@ -129,23 +122,11 @@
     });
 
     // manual switch
-    const btnDark = document.querySelector('.btn-dark');
+   
+
     btnDark.addEventListener('click', () => {
       setDark(localStorage.getItem('dark') !== 'true');
-
-      const logo = document.querySelector(".mylogo");
-      const currentSrc = logo.getAttribute("src");
-
-      const lightLogo = "https://cosmicocean.netlify.app/logo.png";
-      const darkLogo = "https://cosmicocean.netlify.app/logo_for_dark.png";
-
-
-      // Toggle the src attribute
-      if (currentSrc === lightLogo) {
-        logo.setAttribute("src", darkLogo);
-      } else {
-        logo.setAttribute("src", lightLogo);
-      }
+     
 
     });
   </script>
