@@ -91,15 +91,36 @@
       metaTheme.setAttribute('content', isDark ? '#000' : lightBg);
       htmlClass[isDark ? 'add' : 'remove']('dark');
       localStorage.setItem('dark', isDark);
+      const logo = document.querySelector(".mylogo");
+      const currentSrc = logo.getAttribute("src");
+
+      const darkLogo = "https://cosmicocean.netlify.app/logo_for_dark.png";
+      // Toggle the src attribute
+      logo.setAttribute("src", darkLogo);
     };
 
     // init
     const darkScheme = window.matchMedia('(prefers-color-scheme: dark)');
     if (htmlClass.contains('dark')) {
       setDark(true);
+      const logo = document.querySelector(".mylogo");
+      const currentSrc = logo.getAttribute("src");
+
+      const darkLogo = "https://cosmicocean.netlify.app/logo_for_dark.png";
+      // Toggle the src attribute
+      logo.setAttribute("src", darkLogo);
+      
+      
     } else {
       const darkVal = localStorage.getItem('dark');
       setDark(darkVal ? darkVal === 'true' : darkScheme.matches);
+      const logo = document.querySelector(".mylogo");
+      const currentSrc = logo.getAttribute("src");
+
+      const lightLogo = "https://cosmicocean.netlify.app/logo.png";
+      // Toggle the src attribute
+      logo.setAttribute("src", lightLogo);
+      
     }
 
     // listen system
