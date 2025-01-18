@@ -14,3 +14,11 @@
   width: 100%; /* Adjust the width as needed (e.g., 100%, 400px, etc.) */
  
 }
+
+
+/* Centers all img tags (images) */ 
+img {
+    display: block;
+    margin: 0 auto;
+    text-align: center;
+}
