@@ -5,9 +5,6 @@
     >
     -->
 
-     
-    
-    
       <a href="{{ `` | absURL }}" 
       >
       <img class='mylogo' style="margin-right: 03px;" src="{{ if site.Params.monoDarkIcon }}https://cosmicocean.netlify.app/logo_for_dark.png{{ else }}https://cosmicocean.netlify.app/logo.png{{ end }}" />
@@ -20,7 +17,7 @@
       aria-label="Dark"
       ></div>
     
-   
+
   </div>
 
   <div
@@ -46,6 +43,9 @@
       {{ end }}
     </nav>
     {{ end }}<!---->
+    {{ $social_list := slice "twitter" "github" "mastodon" "customAIbot" }} <!-- Add 'customAIbot' to the list -->
+    {{ $.Scratch.Set "social_list" $social_list }}
+  
 
     {{ with $.Scratch.Get "social_list" }}
     <nav
@@ -56,7 +56,7 @@
       <a
         class="h-7 w-7 text-[0] [background:var(--url)_center_center/cover_no-repeat] lg:h-6 lg:w-6"
         style="--url: url(./{{ . }}.svg)"
-        href="{{ if eq . `rss` }}{{ `index.xml` | absURL }}{{ else if eq . `mastodon` }}{{ index site.Params . }}{{ else }}{{ if eq . `threads` }}https://threads.net/{{ else if eq . `bluesky` }}https://bsky.app/profile/{{ else }}https://{{ . }}.com/{{ end }}{{ if eq . `linkedin` }}in/{{ end }}{{ index site.Params . }}{{ end }}"
+        href="{{ if eq . `rss` }}{{ `index.xml` | absURL }}{{ else if eq . `mastodon` }}{{ index site.Params . }}{{ else if eq . `customAIbot` }}{{ index site.Params . }}{{ else }}{{ if eq . `threads` }}https://threads.net/{{ else if eq . `bluesky` }}https://bsky.app/profile/{{ else }}https://{{ . }}.com/{{ end }}{{ if eq . `linkedin` }}in/{{ end }}{{ index site.Params . }}{{ end }}"
         target="_blank"
         rel="{{ if eq . `rss` }}alternate{{ else }}me{{ end }}"
       >
